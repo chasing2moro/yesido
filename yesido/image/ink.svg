@@ -1,0 +1,17 @@
+<svg width="100" height="80.00000000000001" xmlns="http://www.w3.org/2000/svg">
+ <metadata>image/svg+xmlOpenclipart</metadata>
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="102" height="82" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="layer1" stroke="null">
+   <path id="path3996" d="m23.34882,0.62635c-0.99753,3.73422 -3.9378,7.4682 -0.58963,11.20243l2.94787,0.58959l0,5.30646c-33.84151,10.30394 -11.19496,37.04575 -9.88959,57.19069c29.77514,8.45813 54.90337,4.27292 67.8051,0.5896c-3.30367,-18.80169 28.51188,-46.45919 -11.33598,-55.42163l-1.17892,-4.12716l2.94786,-0.58959c4.59235,-3.37219 1.4992,-7.05036 0.20731,-11.89312c-28.54627,0.34634 -41.05621,-0.94084 -50.9149,-2.84677l0.00088,-0.0005z" fill="#191919" fill-rule="evenodd" stroke="null"/>
+  </g>
+  <text fill="#00ffff" stroke-width="0" x="15.335938" y="54.338541" id="svg_1" font-size="40" font-family="Georgia, Times, 'Times New Roman', serif" text-anchor="start" xml:space="preserve" stroke="#000">.ink</text>
+  <text fill-opacity="0.3" xml:space="preserve" text-anchor="start" font-family="Georgia, Times, 'Times New Roman', serif" font-size="20" id="svg_2" y="74.435421" x="30.301455" stroke-width="0" stroke="#000" fill="#ffffaa">墨水</text>
+  <text fill-opacity="0.3" xml:space="preserve" text-anchor="start" font-family="Georgia, Times, 'Times New Roman', serif" font-size="20" id="svg_3" y="19.778289" x="27.878819" stroke-width="0" stroke="#000" fill="#ffffaa">[ɪŋk]</text>
+ </g>
+</svg>
