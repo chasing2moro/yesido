@@ -138,6 +138,9 @@
 					return;
 				};
 
+				//页顶title也能修改
+				//document.title = showDomain.split(".")[0]
+
 				//页顶域名描述
 				var showDomain = domainNameData.domainName || domainName;
 				$("#domain-name").html("<h1 style='text-align:center'>域名(domain):"+showDomain+"</h1>");
