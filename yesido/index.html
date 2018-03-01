@@ -116,15 +116,40 @@
 	<script >
 		$(document).ready(
 			function(){
-				//页面域名描述
+				var domainNamelist = {};
+				domainNamelist["localhost"] = {email:"chasing2moro@qq.com"};
+				domainNamelist["yesido.ink"] = {email:"chasing2moro@qq.com"};
+
+				//域名
 				var domainName = window.location.host;//document.domain; window.location.href;//获取页面完整地址
+				domainName = domainName.toLowerCase(); //全部转成小写
+				domainName = domainName.replace("www.", "");//把www.去掉
+
+				//页顶域名描述
 				$("#domain-name").html("<h1 style='text-align:center'>域名(domain):"+domainName+"</h1>");
 
+				var domainDir = domainName.replace(".", "_");
+
+
 				//ajax异步加载不同模块
-				$("#main-load").load("domain/yesido_ink/main_load.html");
+				var ajaxFile = "domain/"+ domainDir +"/main_load.html";
+				$("#main-load").load(ajaxFile, function(responseTxt,statusTxt,xhr){
+				    if(statusTxt=="success"){
+						//alert("Ajax Load Success");
+				    }
+				   
+				    if(statusTxt=="error"){
+				    	console.error("Ajax Load Error:"+xhr.status+" status:"+xhr.statusText + " file:" + ajaxFile);
+				    }
+  				});
 
 				//发送邮件
-				var emailName = "chasing2moro@qq.com";
+				var domainNameData = domainNamelist[domainName];
+				if (domainNameData == undefined || domainNameData == null) {
+					alert(domainName + "没有找到数据 domainNameData:" + domainNameData);
+				};
+				var emailName = domainNameData.email;
+
 				$("a.domain-buy").attr("href", "mailto:" + emailName + "?subject=" + domainName);//发送邮件地址+主题
 				$("a.domain-buy").html(emailName);//发送地址再次描述
 			}
