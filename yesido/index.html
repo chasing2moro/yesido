@@ -127,6 +127,9 @@
 				domainName = domainName.toLowerCase(); //全部转成小写
 				domainName = domainName.replace("www.", "");//把www.去掉
 
+				//debug
+				//domainName = "yesido.name";
+
 				//获取域名结构体
 				var domainNameData = G_DomainNamelist[domainName];
 				if (domainNameData == undefined || domainNameData == null) {
