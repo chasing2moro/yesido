@@ -113,12 +113,14 @@
 
 
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="config.js"></script>
 	<script >
 		$(document).ready(
 			function(){
-				var domainNamelist = {};
-				domainNamelist["localhost"] = {email:"chasing2moro@qq.com"};
-				domainNamelist["yesido.ink"] = {email:"chasing2moro@qq.com"};
+				//var domainNamelist = {};
+				//domainNamelist["localhost"] = {email:"chasing2moro@qq.com"};
+				//domainNamelist["yesido.ink"] = {email:"chasing2moro@qq.com"};
+				//domainNamelist["yesido.name"] = {email:"chasing2moro@qq.com"};
 
 				//域名
 				var domainName = window.location.host;//document.domain; window.location.href;//获取页面完整地址
@@ -144,7 +146,7 @@
   				});
 
 				//发送邮件
-				var domainNameData = domainNamelist[domainName];
+				var domainNameData = G_DomainNamelist[domainName];
 				if (domainNameData == undefined || domainNameData == null) {
 					alert(domainName + "没有找到数据 domainNameData:" + domainNameData);
 				};
