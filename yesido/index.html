@@ -130,7 +130,9 @@
 				//获取域名结构体
 				var domainNameData = G_DomainNamelist[domainName];
 				if (domainNameData == undefined || domainNameData == null) {
+					$("#domain-name").html("<h1 style='text-align:center'>域名(domain):"+domainName+"</h1>");
 					alert(domainName + "没有找到数据 domainNameData:" + domainNameData);
+					return;
 				};
 
 				//页顶域名描述
