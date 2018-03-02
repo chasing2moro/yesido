@@ -52,7 +52,7 @@
 
 				//根据不同情况加载css
 				var cssFile = "domain/"+ domainDir +"/main_sheet.css";
-				$("<link>").attr({rel:"stylesheet", type:"text/css", href:cssFile}).appendTo("head"); 
+				$("<link>").attr({rel:"stylesheet", type:"text/css", href:cssFile}).appendTo("head"); //<>是创建节点，不是获取节点
 
 
 				//ajax异步加载不同模块
