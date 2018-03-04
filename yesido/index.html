@@ -15,11 +15,6 @@
 	<script >
 		$(document).ready(
 			function(){
-				//var domainNamelist = {};
-				//domainNamelist["localhost"] = {email:"chasing2moro@qq.com"};
-				//domainNamelist["yesido.ink"] = {email:"chasing2moro@qq.com"};
-				//domainNamelist["yesido.name"] = {email:"chasing2moro@qq.com"};
-
 				//域名
 				var domainName = window.location.host;//document.domain; window.location.href;//获取页面完整地址
 				domainName = domainName.toLowerCase(); //全部转成小写
@@ -27,6 +22,9 @@
 
 				//debug
 				//domainName = "yesido.name";
+				if (domainName == 'localhost') {
+					domainName = "yesido.name";
+				}
 
 				//获取域名结构体
 				var domainNameData = G_DomainNamelist[domainName];
@@ -70,7 +68,9 @@
 				//发送邮件
 				var emailName = domainNameData.email;
 				$("a.domain-buy").attr("href", "mailto:" + emailName + "?subject=" + showDomain);//发送邮件地址+主题
-				$("a.domain-buy").html(emailName);//发送地址再次描述
+				var emaildes = emailName + " ";
+				$("a.ch").append("发送").before(emaildes);//发送
+				$("a.en").append("Send").before(emaildes);//发送
 			}
 		)
 	</script>
@@ -89,8 +89,17 @@
 
 
 		<ul>
-			<li><p class="yesido-font">如果你对此域名感兴趣，可以联系邮箱<a class="domain-buy" href="mailto:chasing2moro@qq.com">chasing2moro@qq.com</a></p></li>
-    		<li><p class="yesido-font">If you interest in this domain name, contact email:<a class="domain-buy" href="mailto:chasing2moro@qq.com">chasing2moro@qq.com</a></p></li>
+			<li><p class="yesido-font">如果你对此域名感兴趣，可以联系邮箱:<a class="domain-buy ch"></a></p></li>
+    		<li><p class="yesido-font">If you interest in this domain name, contact email:<a class="domain-buy en"></a></p></li>
     	</ul>
+
+    	<br/>
+    	<br/>
+    	<div>
+    		<ul>
+   				<li><p>如果有任何问题，可以联系站主:chasing2moro@qq.com <a href="mailto:chasing2moro@qq.com">发送</a></p></li>
+    			<li><p>Any problem, can contact web developer email:chasing2moro@qq.com <a href="mailto:chasing2moro@qq.com">Send</a></p></li>
+    		</ul>
+    	</div>
     </body>
 </html>
