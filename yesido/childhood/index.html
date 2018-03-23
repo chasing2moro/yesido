@@ -106,11 +106,57 @@
     <script src="assets/js/vendor/holder.min.js"></script>
 
     <script>
-      
+
+//用优酷分享链接加进去网页
+function AddYoukuNodeWithHTML(textyouku, index){
+
+       //获取屏幕宽度
+      var screenWidth =  $(".youkuvideo-box").css("width");//540px
+      screenWidth = screenWidth.replace(/\s+|px/gi,""); //把px去掉 剩下540
+      screenWidth = parseInt(screenWidth) * 0.9;//字符串改成数字
+
+      //获取优酷链接中宽和高
+      var videoWidth;
+      var videoHeight;
+      var heightScale;
+
+      // 获取高度
+      var arrMatch = textyouku.match(/height=([0-9]+)/);//进行match找出匹配的内容 
+      if (arrMatch && arrMatch.length > 1) {
+          videoHeight = arrMatch[1];
+          console.log("Get youku height:" + videoHeight);
+      }else{
+          videoHeight = 300;
+          alert('优酷链接有问题，hardcode宽高都为300');
+      }
+
+      // 获取宽度
+       arrMatch = textyouku.match(/width=([0-9]+)/);//进行match找出匹配的内容 
+      if (arrMatch && arrMatch.length > 1) {
+          videoWidth = arrMatch[1];
+          console.log("Get youku videoWidth:" + videoWidth);
+      }else{
+          videoWidth = 300;
+          alert('优酷链接有问题，hardcode宽都为300');
+      }
+
+      //获取高比宽比例，为了后面根据屏幕宽自动获取高度
+      heightScale = videoHeight / videoWidth;
+
+      //设置优酷组件的宽高，保持原来的宽高比例前提下，让它不超出手机屏幕外
+      textyouku = textyouku.replace(/height=([0-9]+)\s+width=([0-9]+)/,'class="youkuvideo" height=' + parseInt(heightScale * screenWidth) +' width=90%');
+      $(".youkuvideo-box").append("<p>" + (index + 1) + ".</p>");
+      $(".youkuvideo-box").append(textyouku);
+      $(".youkuvideo-box").append("<hr/>");
+}
+
       $(
   
         function () {
-          $arrYouku = [
+
+
+
+        var arrYouku = [
           "<iframe height=498 width=510 src='http://player.youku.com/embed/XMjk5Mzc4OTkyMA==' frameborder=0 'allowfullscreen'></iframe>",
           "<iframe height=498 width=510 src='http://player.youku.com/embed/XMzAwNTE2MDk4MA==' frameborder=0 'allowfullscreen'></iframe>",
           "<iframe height=498 width=510 src='http://player.youku.com/embed/XMjk5Mzc5MDIxMg==' frameborder=0 'allowfullscreen'></iframe>",
@@ -118,38 +164,28 @@
           ];
 
 
-
-
-          //获取屏幕宽度
-          var $screenWidth =  $(".youkuvideo-box").css("width");//540px
-          $screenWidth = $screenWidth.replace(/\s+|px/gi,""); //把px去掉 剩下540
-          $screenWidth = parseInt($screenWidth) * 0.9;//字符串改成数字
-
-          //获取优酷链接中宽和高
-          var $videoWidth;
-          var $videoHeight;
-          var $heightScale;
-          for (var i = 0; i < $arrYouku.length; i++) {
-              var $textyouku = $arrYouku[i];
-              var $arrMatch = $textyouku.match(/height=([0-9]+)\s+width=([0-9]+)/);//进行match找出匹配的内容 
-              if ($arrMatch && $arrMatch.length > 2) {
-                  $videoHeight = $arrMatch[1];
-                  $videoWidth = $arrMatch[2];
-              }else{
-                  $videoHeight = 300;
-                  $videoWidth = 300;
-                  alert('优酷链接有问题，hardcode宽高都为300');
-              }
-              //获取高比宽比例，为了后面根据屏幕宽自动获取高度
-              $heightScale = $videoHeight / $videoWidth;
-
-              //设置优酷组件的宽高，保持原来的宽高比例前提下，让它不超出手机屏幕外
-              $textyouku = $textyouku.replace(/height=([0-9]+)\s+width=([0-9]+)/,'class="youkuvideo" height=' + parseInt($heightScale * $screenWidth) +' width=90%');
-              $(".youkuvideo-box").append("<p>" + (i + 1) + ".</p>");
-              $(".youkuvideo-box").append($textyouku);
-              $(".youkuvideo-box").append("<hr/>");
+     
+          for (var i = 0; i < arrYouku.length; i++) {
+              AddYoukuNodeWithHTML(arrYouku[i], i)
           }
 
+       var $window = $(window);
+       var $document = $(document);
+
+       //滑动到下面20%处，就下载
+       var thresholdHeight2Load = $document.height() * 0.8
+       
+       $window.scroll(function(){
+           if ($document.scrollTop() + $window.height() >= thresholdHeight2Load) {
+                console.log("滑到底部了");
+
+              AddYoukuNodeWithHTML(arrYouku[0], 10);
+
+              console.log("添加测试iframe");
+           } else {
+                //console.log("还没滑到底部了");
+           }
+       });
 
           /*
           //--------------修改youku宽高代码 start--------------
