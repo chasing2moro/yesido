@@ -40,7 +40,7 @@
     </header>
 
     <main role="main">
-
+<!--
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -88,6 +88,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+-->
 
       <div class="container-fluid youkuvideo-box" id="tag-video">
          <!--<img src="" width=100% height=300 alt="视频加载ing，长时间见到我证明你出bug了">-->
@@ -105,11 +106,13 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="assets/js/vendor/holder.min.js"></script>
 
+    <!--自定义配置-->
+    <script src="js/config.js"></script>
+
     <script>
 
 //用优酷分享链接加进去网页
-function AddYoukuNodeWithHTML(textyouku, index){
-
+function AddYoukuNodeWithHTML(textyouku){
        //获取屏幕宽度
       var screenWidth =  $(".youkuvideo-box").css("width");//540px
       screenWidth = screenWidth.replace(/\s+|px/gi,""); //把px去掉 剩下540
@@ -145,10 +148,14 @@ function AddYoukuNodeWithHTML(textyouku, index){
 
       //设置优酷组件的宽高，保持原来的宽高比例前提下，让它不超出手机屏幕外
       textyouku = textyouku.replace(/height=([0-9]+)\s+width=([0-9]+)/,'class="youkuvideo" height=' + parseInt(heightScale * screenWidth) +' width=90%');
-      $(".youkuvideo-box").append("<p>" + (index + 1) + ".</p>");
+      $(".youkuvideo-box").append("<p>" + (G_ArrYoukuIndex + 1) + ".↓优酷下载可能有点慢，感谢您的耐心</p>");
       $(".youkuvideo-box").append(textyouku);
       $(".youkuvideo-box").append("<hr/>");
+
+      //计数器加一，为了跟踪下载多少个youku
+      G_ArrYoukuIndex = G_ArrYoukuIndex + 1;
 }
+
 
       $(
   
@@ -156,32 +163,29 @@ function AddYoukuNodeWithHTML(textyouku, index){
 
 
 
-        var arrYouku = [
-          "<iframe height=498 width=510 src='http://player.youku.com/embed/XMjk5Mzc4OTkyMA==' frameborder=0 'allowfullscreen'></iframe>",
-          "<iframe height=498 width=510 src='http://player.youku.com/embed/XMzAwNTE2MDk4MA==' frameborder=0 'allowfullscreen'></iframe>",
-          "<iframe height=498 width=510 src='http://player.youku.com/embed/XMjk5Mzc5MDIxMg==' frameborder=0 'allowfullscreen'></iframe>",
-          "<iframe height=498 width=510 src='http://player.youku.com/embed/XMjk5Mzc5MDcxNg==' frameborder=0 'allowfullscreen'></iframe>",
-          ];
-
+      var arrYouku = G_ArrYouku;
 
      
-          for (var i = 0; i < arrYouku.length; i++) {
-              AddYoukuNodeWithHTML(arrYouku[i], i)
-          }
+      var initLoadCount = Math.min(arrYouku.length, 6);
+      for (var i = 0; i < initLoadCount; i++) {
+          //加载优酷分享连接
+          AddYoukuNodeWithHTML(arrYouku[i]);
+      }
 
        var $window = $(window);
        var $document = $(document);
 
-       //滑动到下面20%处，就下载
-       var thresholdHeight2Load = $document.height() * 0.8
        
+
        $window.scroll(function(){
-           if ($document.scrollTop() + $window.height() >= thresholdHeight2Load) {
+           if ($document.scrollTop() + $window.height() >= $document.height() * 0.8) {//滑动到下面20%处，就下载
                 console.log("滑到底部了");
 
-              AddYoukuNodeWithHTML(arrYouku[0], 10);
-
-              console.log("添加测试iframe");
+              if (G_ArrYoukuIndex < arrYouku.length ){
+                  AddYoukuNodeWithHTML(arrYouku[G_ArrYoukuIndex]);
+              }else{
+                 console.log("添加iframe已经结束");
+              }
            } else {
                 //console.log("还没滑到底部了");
            }
