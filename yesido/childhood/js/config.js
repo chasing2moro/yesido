@@ -14,13 +14,13 @@ var G_NavHeader =  '<header>\
       <div class="collapse navbar-collapse" id="navbarCollapse">\
         <ul class="navbar-nav mr-auto">\
           <li class="nav-item" id="tag-video">\
-            <a class="nav-link" href="index.html">视频</a>\
+            <a class="nav-link btn btn-lg" href="index.html">视频</a>\
           </li>\
           <li class="nav-item" id="tag-image">\
-            <a class="nav-link" href="image.php">图片</a>\
+            <a class="nav-link btn btn-lg" href="image.php">图片</a>\
           </li>\
           <li class="nav-item" id="tag-about">\
-            <a class="nav-link" href="about.html">关于</a>\
+            <a class="nav-link btn btn-lg" href="about.html">关于</a>\
           </li>\
         </ul>\
       </div>\
