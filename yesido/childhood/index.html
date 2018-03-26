@@ -5,39 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>AnXinVideo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
+
+        <!--自定义配置-->
+    <script src="js/config.js"></script>
+
   </head>
   <body style="padding-top: 0.2rem !important;">
 
-    <header>
-      <nav class="navbar navbar-expand navbar-dark fixed-bottom bg-dark">
-        <!--<a class="navbar-brand" href="#">主页</a>-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">视频(unimplement)<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">关于(unimplement)</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">图片(unclickable)</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+
+    <script>document.write(G_NavHeader)</script>
 
     <main role="main">
 <!--
@@ -106,8 +91,7 @@
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="assets/js/vendor/holder.min.js"></script>
 
-    <!--自定义配置-->
-    <script src="js/config.js"></script>
+
 
     <script>
 
@@ -148,7 +132,7 @@ function AddYoukuNodeWithHTML(textyouku){
 
       //设置优酷组件的宽高，保持原来的宽高比例前提下，让它不超出手机屏幕外
       textyouku = textyouku.replace(/height=([0-9]+)\s+width=([0-9]+)/,'class="youkuvideo" height=' + parseInt(heightScale * screenWidth) +' width=90%');
-      $(".youkuvideo-box").append("<p>" + (G_ArrYoukuIndex + 1) + ".↓优酷下载可能有点慢，感谢您的耐心</p>");
+      $(".youkuvideo-box").append("<p>" + (G_ArrYoukuIndex + 1) + ".↓优酷插件</p>");
       $(".youkuvideo-box").append(textyouku);
       $(".youkuvideo-box").append("<hr/>");
 
@@ -161,6 +145,9 @@ function AddYoukuNodeWithHTML(textyouku){
   
         function () {
 
+           //导航条激活状态
+          $("#tag-video .nav-link").attr("href", "#");
+          $("#tag-video").addClass("active");
 
 
       var arrYouku = G_ArrYouku;
