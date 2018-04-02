@@ -20,7 +20,7 @@ var G_NavHeader =  '<header>\
             <a class="nav-link btn btn-lg" href="image.php">图片</a>\
           </li>\
           <li class="nav-item" id="tag-about">\
-            <a class="nav-link btn btn-lg" href="about.html">关于</a>\
+            <a class="nav-link btn btn-lg" href="about.html">联系</a>\
           </li>\
         </ul>\
       </div>\

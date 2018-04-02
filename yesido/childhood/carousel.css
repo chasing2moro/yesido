@@ -8,6 +8,12 @@ body {
   color: #5a5a5a;
 }
 
+/*圈起来好看一点*/
+.nav-item {
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
