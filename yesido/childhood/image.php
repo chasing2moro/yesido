@@ -112,6 +112,10 @@ foreach ($image_array as $file_no_ext => $file) {
 
     </div>
 
+    <script>
+      document.write(G_BeiAn);
+    </script>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
